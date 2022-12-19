@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #444;
+}
+
+header {
+    background-color: aquamarine;
+}
+
+header .container {
+    display: flex;
+}
+
+header .container h2 {
+    font-size: 1rem;
+    margin-top: auto;
+}
+
+.menu {
+    float: right;
+}
+
+.menu li {
+    display: inline;
+}
+
+.menu li + li {
+    margin-left: 35px;
+}
