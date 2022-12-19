@@ -10,8 +10,6 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-""" # ルーティングテスト
-@app.route('/hello')
-def hello():
-    return "hello"
-"""
+@app.route('/contact')
+def contact():
+    return render_template('form.html')
