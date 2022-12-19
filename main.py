@@ -7,5 +7,11 @@ load_dotenv(override=True)
 app = Flask(__name__)
 
 @app.route('/')
-def index():
+def home():
     return render_template('index.html')
+
+""" # ルーティングテスト
+@app.route('/hello')
+def hello():
+    return "hello"
+"""
