@@ -2,5 +2,18 @@
 {% block content %}
 <div>
     <h1>Form Page</h1>
+    <div class="form">
+        <form action="/" method="post">
+            <label for="name">名前</label>
+            <input type="text" id="name" name="contacter_name">
+            <label for="name">メール</label>
+            <input type="email" id="email" name="contacter_email">
+            <label for="name">タイトル</label>
+            <input type="text" id="title" name="contacter_title">
+            <label for="name">本文</label>
+            <input type="text" id="substance" name="contacter_substance">
+            <button type="submit">送信</button>
+        </form>
+    </div>
 </div>
 {% endblock %}
