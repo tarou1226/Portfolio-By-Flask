@@ -1,8 +1,6 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.utils import formatdate
-from datetime import datetime
-from log import make_log_dir, write_log
 
 def send_mail():
     text = "テスト本文"
@@ -26,18 +24,9 @@ def send_mail():
     # logが発生
     smtpclient.set_debuglevel(2)
 
-    try:
-        username = "gmailのアカウント"
-        password = "googleアプリのパスワード?"
-        smtpclient.login(username, password)
+    username = "gmailのアカウント"
+    password = "googleアプリのパスワード?"
+    smtpclient.login(username, password)
 
-        smtpclient.send_message(msg)
-        smtpclient.quit()
-    except smtplib.SMTPException as e:
-        now = str(datetime.now())
-        make_log_dir()
-        write_log(now + ":" + e)
-    except:
-        now = str(datetime.now())
-        make_log_dir()
-        write_log(now + ": undefine error")
+    smtpclient.send_message(msg)
+    smtpclient.quit()
