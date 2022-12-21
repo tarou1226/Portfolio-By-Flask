@@ -29,3 +29,17 @@ header .container h2 {
 .menu li + li {
     margin-left: 35px;
 }
+
+.introduction {
+    text-align: center;
+}
+
+.introduction .me {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+
+.introduction p {
+    white-space: break-spaces;
+}
