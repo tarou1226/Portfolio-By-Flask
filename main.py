@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 import os
+from mail import send_mail
+from datetime import datetime
+from log import make_log_dir, write_log
 
 # 環境変数を上書き
 load_dotenv(override=True)
@@ -22,6 +25,7 @@ class Contact(db.Model):
     email = db.Column(db.String(30), nullable=False)
     title = db.Column(db.String(20), nullable=False)
     substance = db.Column(db.String, nullable=False)
+    send_email = db.Column(db.Boolean, nullable=False)
 
 # エラー対応 アプリケーションコンテキストの複数回参照について
 with app.app_context():
@@ -43,11 +47,19 @@ def home():
         email = request.form.get('contacter_email')
         title = request.form.get('contacter_title')
         substance = request.form.get('contacter_substance')
-
-        post = Contact(name=name, email=email, title=title, substance=substance)
-        db.session.add(post)
-        db.session.commit()
-        return redirect('/')
+        sended = True
+        try:
+            send_mail()
+        except:
+            sended = False
+            now = str(datetime.now())
+            make_log_dir()
+            write_log(now + ": undefine error")
+        finally:
+            post = Contact(name=name, email=email, title=title, substance=substance, send_email=sended)
+            db.session.add(post)
+            db.session.commit()
+            return redirect('/')
 
 # 問い合わせ画面
 @app.route('/contact')
