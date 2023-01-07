@@ -44,3 +44,17 @@ img {
 .introduction p {
     white-space: break-spaces;
 }
+
+.ability {
+    text-align: center;
+}
+
+.container .platform {
+    display: flex;
+    justify-content: center;
+}
+
+.container .skill {
+    display: flex;
+    justify-content: center;
+}
